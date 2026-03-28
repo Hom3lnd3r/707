@@ -8,10 +8,11 @@
 <head>
 	<meta charset="utf-8">
   <style>
+    /* Hide badge immediately if it exists */
     #__framer-badge-container {
         display: none !important;
     }
-  </style>
+ </style>
 	
 	
 	<script>try{if(localStorage.get("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel = "modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}</script>
@@ -314,6 +315,24 @@
       </style>
   </head>
 <body>
+  <script>
+    (function () {
+        function removeFramerBadge() {
+            const el = document.querySelector('#__framer-badge-container');
+            if (el) el.remove();
+        }
+    
+        // Initial removal
+        removeFramerBadge();
+    
+        // Watch for dynamically added elements
+        const observer = new MutationObserver(removeFramerBadge);
+        observer.observe(document.body, { childList: true, subtree: true });
+    
+        // Extra safety: repeat every second in case Framer re-adds it
+        setInterval(removeFramerBadge, 1000);
+    })();
+    </script>
 	<script async src="https://events.framer.com/script?v=2" data-fid="6e1617446b636f609c3ddb7ebb4132a1c8b1393634afad2fc8b93326e00bc180" data-no-nt></script>
 	<!-- Start of bodyStart -->
     
