@@ -137,19 +137,6 @@ h4 { margin: 0;  font-weight: bold;  font-size: 1.18em; }
 	</tr>
 </table>
 
-<script>
-(function () {
-	function removeFramerBadge() {
-		document.querySelector('#__framer-badge-container')?.remove();
-	}
-	removeFramerBadge();
-	new MutationObserver(removeFramerBadge).observe(document.documentElement, {
-		childList: true,
-		subtree: true,
-	});
-})();
-</script>
-
 </body>
 
 </html>
